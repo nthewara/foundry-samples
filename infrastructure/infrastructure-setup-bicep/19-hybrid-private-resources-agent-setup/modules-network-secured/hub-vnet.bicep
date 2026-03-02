@@ -261,5 +261,6 @@ output hubVnetId string = hubVnet.id
 output firewallPrivateIp string = firewall.properties.ipConfigurations[0].properties.privateIPAddress
 output logAnalyticsWorkspaceId string = logAnalytics.id
 output logAnalyticsCustomerId string = logAnalytics.properties.customerId
+output logAnalyticsSharedKey string = logAnalytics.listKeys().primarySharedKey
 output flowLogStorageId string = flowLogStorage.id
 output networkWatcherName string = networkWatcher.name

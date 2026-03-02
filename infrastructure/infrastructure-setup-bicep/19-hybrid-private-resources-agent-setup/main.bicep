@@ -618,6 +618,7 @@ module containerAppsEnv 'modules-network-secured/container-apps-env.bicep' = if 
     suffix: uniqueSuffix
     containerAppsSubnetId: vnet.outputs.containerAppsSubnetId
     logAnalyticsCustomerId: enableHubSpoke ? hubVnet.outputs.logAnalyticsCustomerId : ''
+    logAnalyticsSharedKey: enableHubSpoke ? hubVnet.outputs.logAnalyticsSharedKey : ''
   }
   dependsOn: [
     hubVnet

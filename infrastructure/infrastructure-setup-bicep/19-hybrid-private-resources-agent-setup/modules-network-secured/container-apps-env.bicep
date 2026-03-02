@@ -18,6 +18,10 @@ param containerAppsSubnetId string
 @description('Log Analytics workspace customer ID')
 param logAnalyticsCustomerId string
 
+@secure()
+@description('Log Analytics workspace shared key')
+param logAnalyticsSharedKey string
+
 // ---- ACR ----
 var acrName = toLower('mcpacr${suffix}')
 
@@ -62,6 +66,7 @@ resource containerAppsEnv 'Microsoft.App/managedEnvironments@2024-03-01' = {
       destination: 'log-analytics'
       logAnalyticsConfiguration: {
         customerId: logAnalyticsCustomerId
+        sharedKey: logAnalyticsSharedKey
       }
     }
     workloadProfiles: [

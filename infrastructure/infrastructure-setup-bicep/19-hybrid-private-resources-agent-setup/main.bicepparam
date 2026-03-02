@@ -69,6 +69,6 @@ param peSubnetPrefix = ''
 param enableHubSpoke = true
 param hubVnetName = 'hub-vnet'
 param spoke2VnetName = 'spoke2-vnet'
-param vmAdminUsername = 'azureuser'
-// SECURITY: Provide your SSH public key at deploy time — do NOT hardcode here
-param vmSshPublicKey = ''
+param vmAdminUsername = ''
+// SECURITY: Provide credentials at deploy time — do NOT hardcode here
+param vmAdminPassword = ''

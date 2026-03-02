@@ -78,9 +78,6 @@
       "value": "spoke2-vnet"
     },
     "vmAdminUsername": {
-      "value": "azureuser"
-    },
-    "vmSshPublicKey": {
       "value": ""
     },
     "existingDnsZones": {
@@ -92,6 +89,9 @@
         "privatelink.blob.core.windows.net": "",
         "privatelink.documents.azure.com": ""
       }
+    },
+    "vmAdminPassword": {
+      "value": ""
     }
   }
 }

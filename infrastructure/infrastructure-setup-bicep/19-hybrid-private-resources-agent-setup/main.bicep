@@ -190,12 +190,13 @@ param hubVnetName string = 'hub-vnet'
 @description('Spoke2 VNet name')
 param spoke2VnetName string = 'spoke2-vnet'
 
+@secure()
 @description('VM admin username for spoke2 jumpbox')
-param vmAdminUsername string = 'azureuser'
+param vmAdminUsername string
 
 @secure()
-@description('SSH public key for the jumpbox VM. Must be provided at deploy time when enableHubSpoke is true.')
-param vmSshPublicKey string = ''
+@description('Admin password for the jumpbox VM. Must be provided at deploy time when enableHubSpoke is true.')
+param vmAdminPassword string
 
 // ---- Hub VNet ----
 module hubVnet 'modules-network-secured/hub-vnet.bicep' = if (enableHubSpoke) {
@@ -511,7 +512,7 @@ module spoke2Vnet 'modules-network-secured/spoke2-vnet.bicep' = if (enableHubSpo
     spoke2VnetName: spoke2VnetName
     routeTableId: enableHubSpoke ? spoke2RouteTable.outputs.routeTableId : ''
     vmAdminUsername: vmAdminUsername
-    vmSshPublicKey: vmSshPublicKey
+    vmAdminPassword: vmAdminPassword
   }
 }
 

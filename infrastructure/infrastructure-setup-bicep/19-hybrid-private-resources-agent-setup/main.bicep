@@ -151,6 +151,7 @@ var projectName = toLower('${firstProjectName}${uniqueSuffix}')
 var cosmosDBName = toLower('${aiServices}${uniqueSuffix}cosmosdb')
 var aiSearchName = toLower('${aiServices}${uniqueSuffix}search')
 var azureStorageName = toLower('${aiServices}${uniqueSuffix}storage')
+var containerRegistryName = toLower('${aiServices}${uniqueSuffix}acr')
 
 // Check if existing resources have been passed in
 var storagePassedIn = azureStorageAccountResourceId != ''
@@ -301,6 +302,7 @@ module aiDependencies 'modules-network-secured/standard-dependent-resources.bice
     // Cosmos DB Account
     cosmosDBResourceId: azureCosmosDBAccountResourceId
     cosmosDBExists: validateExistingResources.outputs.cosmosDBExists
+    containerRegistryName: containerRegistryName
   }
 }
 
@@ -335,6 +337,7 @@ module privateEndpointAndDNS 'modules-network-secured/private-endpoint-and-dns.b
     aiSearchName: aiDependencies.outputs.aiSearchName // AI Search to secure
     storageName: aiDependencies.outputs.azureStorageName // Storage to secure
     cosmosDBName: aiDependencies.outputs.cosmosDBName
+    containerRegistryName: aiDependencies.outputs.containerRegistryName
     fabricWorkspaceResourceId: fabricWorkspaceResourceId // Microsoft Fabric workspace (optional)
     vnetName: vnet.outputs.virtualNetworkName // VNet containing subnets
     peSubnetName: vnet.outputs.peSubnetName // Subnet for private endpoints
